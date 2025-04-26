@@ -1,0 +1,13 @@
+# Table of Contents
+- [0.1 Introduction](#01-introduction) 
+- [0.2 Description of the Design](#02-description-of-the-design) 
+- [0.3 Implementation](#03-implementation)
+- [0.3.1 Unit Cell](#031-unit-cell)
+- [0.3.2 8x8 Unit Cell Array](#032-8x8-unit-cell-array)
+- [0.3.3 Reference Generator](#033-reference-generator)
+- [0.3.4 Decoder](#034-decoder)
+- [0.3.5 Decoder (Additional Circuit)](#035-decoder-additional-circuit)
+- [0.3.6 Final Implementation Of DAC](#036-final-implementation-of-dac) 
+- [0.4 Parasitic Extraction and Post-Layout Simulation](#04-parasitic-extraction-and-post-layout-simulation)
+- [0.5 What is the idea of having the transistors M7 and M8 in the design?](#05-what-is-the-idea-of-having-the-transistors-m7-and-m8-in-the-design)
+- [0.6 Reference](#06-reference)
