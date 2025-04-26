@@ -33,6 +33,7 @@ The main objectives are to understand the design principles of a DAC, generatea 
 <p align="justify">
 A digital to analogue converter (DAC) converts a binary digital word into an analogue value, either a voltage or a current. In our example, the binary word has a length of 6-bit and the minimum step size of the analogue word, which is also called a LSB, will be 1 µA as we are using a current as the analogue signal. Figure 1 shows the top-level schematic of such a DAC During operation the number of unit cells
   
+<<<<<<< HEAD
 ![Toplevel Schematic of 6bit Digital to Analog Converter](path/to/your/image2.png)
 **Fig 1:** Toplevel Schematic of 6bit Digital to Analog Converter
 
@@ -40,12 +41,23 @@ which are turned on are equivalent to the number of 1’s at the output of the d
 
 ![3bit Binary to 7bit Thermometer Decoder](path/to/your/image2.png) 
 **Table 1:** 3bit Binary to 7bit Thermometer Decoder
+=======
+![Description of the Design](path/to/your/image2.png)
+
+which are turned on are equivalent to the number of 1’s at the output of the decoder. Subsequently the output is the sum of all the unit cells which are turned on As this implementation requires a lot of wiring, it can be simplified by arranging the unit cells in a matrix of 8x8 cells and select them by a row- and a column-decoder, each 3bit binary to 7bit thermometer. The output of a 3 to 7 binary to thermometer decoder is according to table 1.
+
+![Description of the Design](path/to/your/image2.png)
+>>>>>>> 64269cbbd7e4ebac2a0f4934a5020694f40c3a62
 
 Figure 3 shows the new top-level design with the 8x8 matrix of unit cells and the two decoders.The operation is as following: with the column decoder the first 7bits of a the first row are individually selected. For bit 8 the complete row will be selected by the row decoder, all bits of the column decoder are set to 0 again. This procedure is repeated until all 7 rows are selected. The remaining 7bits are again individually selected by the column decoder.As this scheme uses only 63 of the 64 cells, the remaining cell can be used as a reference diode for the current mirror. Implementation will be shown later in the
 description of the circuits.
 
+<<<<<<< HEAD
 ![ Modified Schematic of 6bit Digital to Analog Converter](path/to/your/image2.png)
 **Fig 2:** Modified Schematic of 6bit Digital to Analog Converter
+=======
+![Description of the Design](path/to/your/image2.png)
+>>>>>>> 64269cbbd7e4ebac2a0f4934a5020694f40c3a62
 </p>
 
 
@@ -74,6 +86,7 @@ Initially, the functionality of the unit cell schematic is verified using the cu
 - IDC = 2 µA.
   
 ![Unit Cell](path/to/your/image4.png)
+<<<<<<< HEAD
 **Fig 3:** Unit Cell Symbol
 
 ![Parameters of Transistors in Unit Cell](path/to/your/image4.png)
@@ -90,6 +103,9 @@ Initially, the functionality of the unit cell schematic is verified using the cu
 
 ![Unit Cell Test Layout](path/to/your/image4.png)
 **Fig 7:** Unit Cell Layout
+=======
+
+>>>>>>> 64269cbbd7e4ebac2a0f4934a5020694f40c3a62
 </p>
 
 
@@ -101,6 +117,7 @@ A total of 63 current-mirrored unit cells that are arranged in an 8 by 8 matrix,
 </p>
 
 ![8x8 Unit Cell Array](path/to/your/image5.png)
+<<<<<<< HEAD
 **Fig 8:** Schematic of the 8 by 8 unit cell matrix
 
 ![8x8 Unit Cell Array symbol](path/to/your/image5.png)
@@ -150,6 +167,24 @@ The logical gates used in this design are according to Table 4.
 
 
 
+=======
+
+
+
+### 0.3.3 Reference Generator
+![Reference Generator](path/to/your/image6.png)
+
+_Explain the Reference Generator here._
+
+---
+
+### 0.3.4 Decoder
+![Decoder](path/to/your/image7.png)
+
+_Explain the Decoder here._
+
+---
+>>>>>>> 64269cbbd7e4ebac2a0f4934a5020694f40c3a62
 
 ### 0.3.5 Decoder (Additional Circuit)
 ![Decoder (Additional Circuit)](path/to/your/image8.png)
