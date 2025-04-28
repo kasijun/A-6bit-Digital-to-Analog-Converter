@@ -167,18 +167,71 @@ The logical gates used in this design are according to Table 4.
 
 
 ### 0.3.5 Decoder (Additional Circuit)
-![Decoder (Additional Circuit)](./img/)
+ The row- and column-decoder needs an additional decoder circuit which generates the following signals:
+ - 8 signals for the active rows
+ - 7 signals for selecting a single cell in an active row
+ - 7 signals for turning on a complete row
+ The decoder circuit is implemented in using iterated instance and connection by name as follow
 
-_Explain the additional Decoder circuit here._
+![Decoder Circuit for Conversion of Row-/Column-Decoder Outputs](./img/)
+**Fig 15:**  Decoder Circuit for Conversion of Row-/Column-Decoder Outputs
 
----
+![Decoder Circuit  Symbol for Conversion of Row-/Column-Decoder Outputs](./img/)
+**Fig 16:**  Decoder Circuit for Conversion of Row-/Column-Decoder Outputs
 
-### 0.3.6 Final Implementation Of DAC
-![Final Implementation of DAC](./img/)
+ The dimensions of the individual transistors can be found in Table 5.
 
-_Explain the final implementation here._
+![Logical Gates used in the Circuit in Figure 20](./img/)
+**Table :5** Logical Gates used in the Circuit in Figure 15
 
----
+![Layout of Decoder Circuit for Conversion of Row-/Column-Decoder Outputs](./img/)
+**Fig 17:**  Layout of Decoder Circuit for Conversion of Row-/Column-Decoder Outputs
+
+### 0.3.6 Final Implementation Of DAC adn pre-layout Simulation
+
+<p align="justify">
+ 
+The block diagram for the signal flow in the proposed 6-bit DAC is presented in Figure 20 below for further reference.
+ 
+ ![ Block Diagram of the Signal Flow in the DAC](./img/)
+ **Fig 17:**   Block Diagram of the Signal Flow in the DAC
+ 
+
+The layout design was initiated following successful verification of the schematics, with a focus on ad
+hering to the existing design hierarchy. At each level of the design hierarchy, LVS and DRC violations
+ were rectified. power mesh was routed to provide proper ground and power to all modules. To ensure a
+ proper fit within the matrix, a unit cell matrix was created.The layout design is based on the presented
+ floorplan, as illustrated in Figure 18.
+
+ ![ Layout floorplan of the DAC](./img/)
+ **Fig 17:**  Layout floorplan of the DAC
+
+The functionality verification for the 6-bit DAC is performed using the test bench setup shown in Figure 25.
+
+ ![Test Bench for DAC](./img/)
+ **Fig 18:**  Test Bench for DAC
+
+The ADE environment setup for the simulation of 6-bit DAC is shown in Figure 25 for reference.
+
+ ![Transient Analysis setup of the DAC test bench](./img/)
+ **Fig 19:** Transient Analysis setup of the DAC test bench
+
+ 
+ To verify the functionality of the 3 to 8 decoder, decoder logic, and the unit cell matrix in the 6-bit
+ DAC test bench setup, with the above test bench setup of 6-bit ADC, the functionality of the 3
+ to 8 decoder, decoder logic, and the unit cell matrix can also be verified by
+ cross-referencing the digital input data with the obtained current (Iout) at the
+ unit cell matrix output as seen in Figure 24 above. In addition, the signal flow
+ diagram from Figure 20 comes in handy to debug and apply corrections during
+ the functional verification of the DAC and its sub-blocks.
+
+![DAC-All modules integrated](./img/)
+ **Fig 20:** DAC-All modules integrated
+</p>
+
+
+
+
 
 ## 0.4 Parasitic Extraction and Post-Layout Simulation
 ![Parasitic Extraction and Post-Layout Simulation](./img/)
