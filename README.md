@@ -7,7 +7,7 @@
   - [0.3.3 Reference Generator](#033-reference-generator)
   - [0.3.4 Decoder](#034-decoder)
   - [0.3.5 Decoder (Additional Circuit)](#035-decoder-additional-circuit)
-  - [0.3.6 Final Implementation Of DAC](#036-final-implementation-of-dac)
+  - [0.3.6 Final Implementation Of DAC and Pre-Layout Simulation](#036-final-implementation-of-dac-and-Pre-Layout-Simulation)
 - [0.4 Parasitic Extraction and Post-Layout Simulation](#04-parasitic-extraction-and-post-layout-simulation)
 - [0.5 What is the idea of having the transistors M7 and M8 in the design?](#05-what-is-the-idea-of-having-the-transistors-m7-and-m8-in-the-design)
 - [0.6 Reference](#06-reference)
@@ -187,7 +187,8 @@ The logical gates used in this design are according to Table 4.
 ![Layout of Decoder Circuit for Conversion of Row-/Column-Decoder Outputs](./img/)
 **Fig 17:**  Layout of Decoder Circuit for Conversion of Row-/Column-Decoder Outputs
 
-### 0.3.6 Final Implementation Of DAC adn pre-layout Simulation
+
+### 0.3.6 Final Implementation Of DAC and Pre-Layout Simulation
 
 <p align="justify">
  
@@ -204,29 +205,50 @@ hering to the existing design hierarchy. At each level of the design hierarchy, 
  floorplan, as illustrated in Figure 18.
 
  ![ Layout floorplan of the DAC](./img/)
- **Fig 17:**  Layout floorplan of the DAC
+ **Fig 18:**  Layout floorplan of the DAC
 
 The functionality verification for the 6-bit DAC is performed using the test bench setup shown in Figure 25.
 
  ![Test Bench for DAC](./img/)
- **Fig 18:**  Test Bench for DAC
+ **Fig 19:**  Test Bench for DAC
 
 The ADE environment setup for the simulation of 6-bit DAC is shown in Figure 25 for reference.
 
  ![Transient Analysis setup of the DAC test bench](./img/)
- **Fig 19:** Transient Analysis setup of the DAC test bench
+ **Fig 20:** Transient Analysis setup of the DAC test bench
+ 
+To verify the functionality of the 3 to 8 decoder, decoder logic, and the unit cell matrix in the 6-bit DAC test bench setup, with the above test bench setup of 6-bit ADC, the functionality of the 3 to 8 decoder, decoder logic, and the unit cell matrix can also be verified by cross-referencing the digital input data with the obtained current (Iout) at the unit cell matrix output as seen in Figure 24 above. In addition, the signal flow diagram from Figure 20 comes in handy to debug and apply corrections during the functional verification of the DAC and its sub-blocks.
+ 
+ 
+![DAC-All modules integrated](./img/)
+ **Fig 21:** DAC-All modules integrated
+
+To verify the functionality of the 3 to 8 decoder, decoder logic, and the unit cell matrix in the 6-bit DAC test bench setup, it is possible to cross-reference the digital input data with the obtained current (Iout) at the output of the unit cell matrix, as illustrated in Figure 22 and 23 respectively. As we expected 63 µA current is observed at the Iout for the complete 64 6-bit digital input.
+
+![Digital Input of DAC](./img/)
+ **Fig 22:** Digital Input of DAC
+
+ Transient response for each inputs of 8x8 matrix unit cell is given in the figure 24.
+
+ ![Pre-Layout Output characteristics of the DAC](./img/)
+ **Fig 23:** Pre-Layout Output characteristics of the DAC
+
+ ![Transient Response of decoder logic output signal](./img/)
+ **Fig 24:**  Transient Response of decoder logic output signal
+
+  The Final Layout, LVS and DRC results of the 6-bit DAC are as shown in Figures 25,26 and 27 respectively.
+  
+  ![6-bit DAC layout](./img/)
+ **Fig 25:**   6-bit DAC layout
 
  
- To verify the functionality of the 3 to 8 decoder, decoder logic, and the unit cell matrix in the 6-bit
- DAC test bench setup, with the above test bench setup of 6-bit ADC, the functionality of the 3
- to 8 decoder, decoder logic, and the unit cell matrix can also be verified by
- cross-referencing the digital input data with the obtained current (Iout) at the
- unit cell matrix output as seen in Figure 24 above. In addition, the signal flow
- diagram from Figure 20 comes in handy to debug and apply corrections during
- the functional verification of the DAC and its sub-blocks.
+  ![6-bit DAC LVS summary](./img/)
+ **Fig 26:** 6-bit DAC LVS summary
 
-![DAC-All modules integrated](./img/)
- **Fig 20:** DAC-All modules integrated
+ 
+  ![6-bit DAC DRC summary](./img/)
+ **Fig 27:** 6-bit DAC DRC summary
+ 
 </p>
 
 
@@ -234,11 +256,27 @@ The ADE environment setup for the simulation of 6-bit DAC is shown in Figure 25 
 
 
 ## 0.4 Parasitic Extraction and Post-Layout Simulation
-![Parasitic Extraction and Post-Layout Simulation](./img/)
 
-_Write about parasitic extraction and post-layout simulation here._
+<p align="justify">
+ Under typical operating conditions, RC and C-only extraction were performed on the DAC layout using Quantus, which extracted the parasitic capacitance and resistance values. This step allows for a more precise analysis of circuit performance and signal integrity as it can identify parasitics that may affect circuit behavior. Accurately extracting and accounting for parasitics in the design can help optimize it for better performance and lower noise. The process of RC and C-only extraction is an essential step in ensuring the quality and reliability of the final design. With the same ADE setup from pre-layout simulations and the inclusion of the newly created calibre views of parasitic extraction in the config view for the 6-bit DAC test bench schematic, the post-layout simulation was performed as shown in Figure 28.
 
----
+![Config view of the 6-bit DAC](./img/)
+ **Fig 28:**  Config view of the 6-bit DAC
+  
+Later the netlist was generated for the testbench to  check whether the schematic view of the 6-bit DAC was replaced by the extracted file generated from the layout. This is followed by the simulation with the C-Only and RC extracted files. The output response is shown in Figures 29 and 30. 
+
+![Output characteristics of the 6-bit DAC using Conly](./img/)
+ **Fig 29:**  Output characteristics of the 6-bit DAC using C only
+
+ ![Output characteristics of the 6-bit DAC using RConly](./img/)
+ **Fig 30:**  Output characteristics of the 6-bit DAC using RConly
+
+ The output response for digital input code (111111) marked in the pre-layout and post-layout simu lations results in Figures 28,34, and 35 are compared as shown in Table below.
+
+ ![Comparison of pre-layout and post-layout responses of the DAC](./img/)
+ **Fig 31:** Comparison of pre-layout and post-layout responses of the DAC
+</p>
+
 
 ## 0.5 What is the idea of having the transistors M7 and M8 in the design?
 ![Transistors M7 and M8](./img/)
